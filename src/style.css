@@ -28,6 +28,11 @@
   src: url("/fonts/RobotoMono-MediumItalic.ttf") format("opentype");
 }
 
+@font-face {
+  font-family: "RobotoMono-Light";
+  src: url("/fonts/RobotoMono-Light.ttf") format("opentype");
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
