@@ -8,6 +8,26 @@
   src: url("/fonts/perfectly-nineties-regular.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Delirium-One";
+  src: url("/fonts/Delirium-One.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Dokdo-Regular";
+  src: url("/fonts/Dokdo-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "RobotoMono-Medium";
+  src: url("/fonts/RobotoMono-Medium.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "RobotoMono-MediumItalic";
+  src: url("/fonts/RobotoMono-MediumItalic.ttf") format("opentype");
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

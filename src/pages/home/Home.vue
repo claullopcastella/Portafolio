@@ -7,28 +7,36 @@
   <div class="contenedor">
     <div class="contenido">
   <p class="parrafo-introduccion">
-    Este párrafo usa Perfectly Nineties.
+    Welcome to my
   </p>
-
-  <p>
-    Este párrafo usa la fuente por defecto.
+  <p class="portfolio">
+    portfolio !
   </p>
   </div>
   </div>
 </template>
 
 <style scoped>
-.parrafo-introduccion {
-  font-family: "perfectly-nineties-regular", sans-serif;
-  font-size: 2.5rem;
+.parrafo-introduccion,
+.portfolio {
+  font-family: "RobotoMono-MediumItalic", sans-serif;
   transition: font-size 0.3s ease-in-out;
+  margin: 0;
+}
+
+.parrafo-introduccion{
+  font-size: 1.6rem;
+}
+
+.portfolio{
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .contenedor {
   width: 100%;
-  padding: 0 10rem;
+  padding: 13rem 10rem;
   box-sizing: border-box;
-  margin: 2rem 0;
 }
 
 .contenido {
@@ -36,9 +44,11 @@
 }
 
 @media (min-width: 1024px) {
-  .parrafo-introduccion {
-    font-size: 3rem;
+  .parrafo-introduccion{
+    font-size: 2rem;
   }
-
+  .portfolio{
+    font-size: 3.4rem;
+  }
 }
 </style>
