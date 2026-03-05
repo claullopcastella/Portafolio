@@ -46,14 +46,28 @@ const scrollToSection = (id: string) => {
 
 
   <div class="contenedor">
+
     <div class="contenido">
-  <p class="parrafo-introduccion">
-    Welcome to my
-  </p>
-  <p class="portfolio">
-    portfolio
-  </p>
-  </div>
+      <div class="intro">
+
+        <div class="texto">
+        <p class="parrafo-introduccion">
+          hello! my name is
+        </p>
+        <p class="portfolio">
+          Claudia
+        </p>  
+        </div>
+
+        <img
+         src="/imagenes/justin-yo.png"
+         alt="justin-yo"
+         class="imagen-intro"
+        />
+
+    </div>
+    </div>
+
   </div>
 
   <section id="inicio" class="min-h-screen bg-gray-50"></section>
@@ -64,6 +78,26 @@ const scrollToSection = (id: string) => {
 
 <style>
 
+.texto {
+  max-width: 400px;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.imagen-intro {
+  width: clamp(140px, 18vw, 220px);
+  height: auto;
+  max-width: 300px;
+}
+
 .dropdown-tabla {
   border: 1px solid black;
   border-radius: 0 !important;
@@ -72,7 +106,7 @@ const scrollToSection = (id: string) => {
 }
 
 .fuente-dropdown {
-  font-family: "RobotoMono-Light", sans-serif;
+  font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease-in-out;
@@ -89,7 +123,7 @@ const scrollToSection = (id: string) => {
 
 .parrafo-introduccion,
 .portfolio {
-  font-family: "RobotoMono-MediumItalic", sans-serif;
+  font-family: "ALteHaasGroteskBold", sans-serif;
   transition: font-size 0.3s ease-in-out;
   margin: 0;
 }
@@ -105,20 +139,35 @@ const scrollToSection = (id: string) => {
 
 .contenedor {
   width: 100%;
-  padding: 13rem 10rem;
+  padding: 13rem 2rem;
   box-sizing: border-box;
 }
 
 .contenido {
   margin: 0 auto;
+  max-width: 1400px;
+}
+
+@media (min-width: 768px) {
+  .contenedor {
+    padding: 13rem 4rem;
+  }
 }
 
 @media (min-width: 1024px) {
+  .contenedor {
+    padding: 13rem 6rem;
+  }
+  
   .parrafo-introduccion{
     font-size: 2rem;
   }
   .portfolio{
     font-size: 3.4rem;
+  }
+  
+  .intro {
+    gap: 4rem;
   }
 }
 </style>

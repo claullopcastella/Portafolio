@@ -33,6 +33,21 @@
   src: url("/fonts/RobotoMono-Light.ttf") format("opentype");
 }
 
+@font-face {
+  font-family: "DJGROSS";
+  src: url("/fonts/DJGROSS.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "AlteHaasGroteskBold";
+  src: url("/fonts/AlteHaasGroteskBold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "AlteHaasGroteskRegular";
+  src: url("/fonts/AlteHaasGroteskRegular.ttf") format("opentype");
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
