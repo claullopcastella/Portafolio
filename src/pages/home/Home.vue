@@ -43,9 +43,9 @@ const quitarHover = () => {
       </div>
 
       <div class="menu-items">
-        <button class="menu-button">home</button>
-        <button class="menu-button">about</button>
-        <button class="menu-button">contact me!</button>
+        <router-link to="/" class="menu-button">home</router-link>
+        <router-link to="/about" class="menu-button">about</router-link>
+        <router-link to="/contactme" class="menu-button">contact me!</router-link>
       </div>
 
   </nav>
@@ -143,6 +143,12 @@ const quitarHover = () => {
 .menu-button:hover {
   color: #fff9d6;
   background-color: #0a0d1c;
+}
+
+.router-link-exact-active {
+  color: #fff9d6;
+  background-color: #0a0d1c;
+  transition: all 0.25s ease;
 }
 
 
