@@ -1,146 +1,128 @@
 <script lang="ts" setup>
-import DropdownMenu from '@/components/ui/dropdown-menu/DropdownMenu.vue';
-import DropdownMenuContent from '@/components/ui/dropdown-menu/DropdownMenuContent.vue';
-import DropdownMenuItem from '@/components/ui/dropdown-menu/DropdownMenuItem.vue';
-import DropdownMenuTrigger from '@/components/ui/dropdown-menu/DropdownMenuTrigger.vue';
 import { ref } from 'vue';
 
 const imagenDefault = '/imagenes/Justin-Bieber-PNG.png';
 const imagenHover = '/imagenes/Justin-Bieber-PNG-hover.png';
 const iconoMenu1 = ref(imagenDefault);
 
-const scrollToSection = (id: string) => {
-  const section = document.getElementById(id);
-  section?.scrollIntoView({ behavior: 'smooth'});
-};
+const cambiarHover = () => {
+  iconoMenu1.value = imagenHover;
+}
+const quitarHover = () => {
+  iconoMenu1.value = imagenDefault;
+}
 
 </script>
 
+
+
+
+
+
+
+
+
+
+
+
 <template>
 
-  <div class="fixed top-4 left-4 z-50">
-    <DropdownMenu>
-      <DropdownMenuTrigger>
+  <nav class="nav-bar fixed top-0 left-0 w-full z-50 px-4">
+
+      <div class="nav-left">
         <img
         :src="iconoMenu1"
         alt="iconoMenu"
-        class="w-16 h-16 cursor-pointer block my-4 mx-5"
-        @mouseenter="iconoMenu1 = imagenHover"
-        @mouseleave="iconoMenu1 = imagenDefault"
+        class="w-16 h-16 cursor-pointer"
+        @mouseenter="cambiarHover"
+        @mouseleave="quitarHover"
         />
-      </DropdownMenuTrigger>
+      </div>
 
+      <div class="menu-items">
+        <button class="menu-button">home</button>
+        <button class="menu-button">about</button>
+        <button class="menu-button">contact me!</button>
+      </div>
 
-    <DropdownMenuContent class="dropdown-tabla p-0">
-      <DropdownMenuItem class="fuente-dropdown" @click="scrollToSection('inicio')">Home</DropdownMenuItem>
-      <DropdownMenuItem class="fuente-dropdown" @click="scrollToSection('sobre-mi')">About</DropdownMenuItem>
-      <DropdownMenuItem class="fuente-dropdown" @click="scrollToSection('proyectos')">Projects</DropdownMenuItem>
-      <DropdownMenuItem class="fuente-dropdown" @click="scrollToSection('contacto')">Contact me!</DropdownMenuItem>
-
-    </DropdownMenuContent>
-
-    </DropdownMenu>
-
-  </div>
-
-
+  </nav>
 
   <div class="contenedor">
-
     <div class="contenido">
       <div class="intro">
 
-        <div class="texto">
-        <p class="parrafo-introduccion">
-          hello! my name is
-        </p>
-        <p class="portfolio">
-          Claudia
-        </p>  
-        </div>
-
-        <img
-         src="/imagenes/justin-yo.png"
-         alt="justin-yo"
-         class="imagen-intro"
-        />
-
     </div>
     </div>
-
   </div>
 
-  <section id="inicio" class="min-h-screen bg-gray-50"></section>
-  <section id="sobre-mi" class="min-h-screen bg-gray-100"></section>
-  <section id="proyectos" class="min-h-screen bg-gray-200"></section>
-  <section id="contacto" class="min-h-screen bg-gray-300"></section>
 </template>
+
+
+
+
+
+
+
+
+
+
+
 
 <style>
 
-.texto {
-  max-width: 400px;
-}
-
-.intro {
+.nav-bar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
+  background-color: #fff9d6;
+  padding: 0.5rem 2rem;
 }
 
-.imagen-intro {
-  width: clamp(140px, 18vw, 220px);
-  height: auto;
-  max-width: 300px;
+.nav-left img {
+  display: block;
 }
 
-.dropdown-tabla {
-  border: 1px solid black;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: hidden;
+.menu-items {
+  display: flex;
+  gap: 1rem;
 }
 
-.fuente-dropdown {
+@media (min-width: 768px) {
+  .menu-items {
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-items {
+    gap: 3rem;
+  }
+}
+
+.menu-button {
+  background: none;
+  border: none;
   font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: 0.875rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
-  border-radius: 0;
+  color: #0a0d1c;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out
 }
 
-.fuente-dropdown:hover {
-  background-color: black;
-  color: white;
-  border-radius: 0 !important;
-  transition: all 0.3s ease-in-out;
+.menu-button:hover {
+  color: #fff9d6;
+  background-color: #0a0d1c;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
 }
 
-.parrafo-introduccion,
-.portfolio {
-  font-family: "ALteHaasGroteskBold", sans-serif;
-  transition: font-size 0.3s ease-in-out;
-  margin: 0;
-}
-
-.parrafo-introduccion{
-  font-size: 1.6rem;
-}
-
-.portfolio{
-  font-size: 3rem;
-  line-height: 1;
-}
 
 .contenedor {
   width: 100%;
   padding: 13rem 2rem;
   box-sizing: border-box;
+  background-color: #fff9d6;
+  min-height: 100vh;
 }
 
 .contenido {
@@ -159,15 +141,5 @@ const scrollToSection = (id: string) => {
     padding: 13rem 6rem;
   }
   
-  .parrafo-introduccion{
-    font-size: 2rem;
-  }
-  .portfolio{
-    font-size: 3.4rem;
-  }
-  
-  .intro {
-    gap: 4rem;
-  }
 }
 </style>
