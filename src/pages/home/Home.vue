@@ -30,6 +30,7 @@ const quitarHover = () => {
   <nav class="nav-bar fixed top-0 left-0 w-full z-50 px-4">
 
       <div class="nav-left">
+        <div class="icon-wrapper">
         <img
         :src="iconoMenu1"
         alt="iconoMenu"
@@ -37,6 +38,8 @@ const quitarHover = () => {
         @mouseenter="cambiarHover"
         @mouseleave="quitarHover"
         />
+        <span class="icon-tooltip">hope you like my work! :)</span>
+      </div>
       </div>
 
       <div class="menu-items">
@@ -69,6 +72,32 @@ const quitarHover = () => {
 
 
 <style>
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  margin-left: 0.25rem;
+  font-size: 0.75rem;
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  color: #0a0d1c;
+  padding: 0;
+  background: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  white-space: nowrap;
+}
+
+.icon-wrapper:hover .icon-tooltip {
+  opacity: 1;
+  transform: translateY(0.25rem);
+}
 
 .nav-bar {
   display: flex;
@@ -106,14 +135,14 @@ const quitarHover = () => {
   font-size: 0.875rem;
   cursor: pointer;
   color: #0a0d1c;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out
 }
 
 .menu-button:hover {
   color: #fff9d6;
   background-color: #0a0d1c;
-  padding: 0.25rem 0.5rem;
-  border-radius: 2px;
 }
 
 
