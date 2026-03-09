@@ -81,7 +81,13 @@ onUnmounted(() => {
     <div class="contenido">
       <div class="intro">
         <img :src="imagenActual" alt="animacion-centro">
-    </div>
+      </div>
+        <p>these are some of my projects</p>
+        
+        <div class="linea-wrapper">
+          <img src="/imagenes/linea.png" class="linea-animada">
+        </div>
+
     </div>
   </div>
 
@@ -99,6 +105,33 @@ onUnmounted(() => {
 
 
 <style>
+
+.linea-wrapper {
+  position: relative;
+  width: 100%;
+  height: 50px; /* fixed height to keep element visible */
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.linea-animada {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  max-height: 100%;
+  width: auto;
+  transform: translateX(-100%) translateY(-50%);
+  animation: mover-linea 4s linear infinite;
+}
+
+@keyframes mover-linea {
+  0% {
+    transform: translateX(-100%) translateY(-50%);
+  }
+  100% {
+    transform: translateX(100%) translateY(-50%);
+  }
+}
 
 .contact-wrapper {
   position: relative;
@@ -119,6 +152,15 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.intro + p {
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-size: 2rem;
+  text-align: left;
+  margin-top: 6rem;
+  color: #0a0307;
+  line-height: 1.6;
 }
 
 .animacion-centro {
