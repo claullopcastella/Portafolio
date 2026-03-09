@@ -84,7 +84,7 @@ const quitarHover = () => {
   left: 100%;
   margin-left: 0.25rem;
   font-size: 0.75rem;
-  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
   color: #0a0d1c;
   padding: 0;
   background: none;
@@ -131,7 +131,7 @@ const quitarHover = () => {
 .menu-button {
   background: none;
   border: none;
-  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
   font-size: 0.875rem;
   cursor: pointer;
   color: #0a0d1c;

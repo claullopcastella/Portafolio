@@ -1,13 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-interface Proyecto {
-  id: number;
-  nombre: string;
-  imagen: string;
-  link: string;
-}
-
 const imagenDefault = '/imagenes/Justin-Bieber-PNG.png';
 const imagenHover = '/imagenes/Justin-Bieber-PNG-hover.png';
 const iconoMenu1 = ref(imagenDefault);
@@ -18,38 +11,6 @@ const cambiarHover = () => {
 const quitarHover = () => {
   iconoMenu1.value = imagenDefault;
 }
-
-
-const proyectos: Proyecto[] = [
-  { id: 1, nombre: 'Proyecto 1', imagen: '/imagenes/proyecto1.png', link: '/proyecto1' },
-  { id: 2, nombre: 'Proyecto 2', imagen: '/imagenes/proyecto2.png', link: '/proyecto2' },
-  { id: 3, nombre: 'Proyecto 3', imagen: '/imagenes/proyecto3.png', link: '/proyecto3' },
-  { id: 4, nombre: 'Proyecto 4', imagen: '/imagenes/proyecto4.png', link: '/proyecto4' },
-  { id: 5, nombre: 'Proyecto 5', imagen: '/imagenes/proyecto5.png', link: '/proyecto5' }
-  
-];
-
-const indiceCentral = ref(2);
-
-const getStyle = (i: number) => {
-  const offset = i - indiceCentral.value;
-  const scale = Math.pow(0.8, Math.abs(offset));
-  const zIndex = 100 - Math.abs(offset);
-  const translateZ = -100 * offset;
-  const translateX = offset * 60;
-  return {
-    transform: `translateX(${translateX}px) translateZ(${translateZ}px) scale(${scale})`,
-    zIndex,
-  };
-};
-
-const calcularTranslateX = () => {
-  return 0;
-};
-
-const irA = (i: number) => {
-  indiceCentral.value = i;
-};
 
 </script>
 
@@ -73,7 +34,7 @@ const irA = (i: number) => {
         <img
         :src="iconoMenu1"
         alt="iconoMenu"
-        class="w-16 h-16 cursor-pointer"
+        class="cursor-pointer"
         @mouseenter="cambiarHover"
         @mouseleave="quitarHover"
         />
@@ -92,25 +53,6 @@ const irA = (i: number) => {
   <div class="contenedor">
     <div class="contenido">
       <div class="intro">
-
-        <div class="w-full h-96 flex justify-center items-center perspective-container overflow-hidden">
-          <div class="relative w-full h-full flex justify-center items-center">
-            <div class="flex relative transition-all dration-500"
-            :style="{ transform: `translateX(${calcularTranslateX()}px)` }">
-              <div
-              v-for="(proyecto, i) in proyectos"
-              :key="proyecto.id"
-              class="absolute top-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-500"
-              >
-                <img :src="proyecto.imagen"
-                 :alt="proyecto.nombre"
-                 class="rounded-lg shadow-lg w-48 md:w-64"
-                 />
-              </div>
-            </div>
-          </div>
-        </div>
-
 
     </div>
     </div>
@@ -131,18 +73,6 @@ const irA = (i: number) => {
 
 <style>
 
-.perspective-container {
-  perspective: 1200px;
-}
-
-img {
-  transition: transform 0.5s;
-}
-
-img:hover {
-  transform: scale(1.05);
-}
-
 .icon-wrapper {
   position: relative;
   display: inline-block;
@@ -151,12 +81,11 @@ img:hover {
 .icon-tooltip {
   position: absolute;
   top: 100%;
-  left: 100%;
-  margin-left: 0.25rem;
+  left: 50%;
+  transform: translate(-30%, 6px);
   font-size: 0.75rem;
-  font-family: "AlteHaasGroteskBold", sans-serif;
-  color: #0e0d0c;
-  padding: 0;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  color: #0a0307;
   background: none;
   opacity: 0;
   pointer-events: none;
@@ -166,19 +95,22 @@ img:hover {
 
 .icon-wrapper:hover .icon-tooltip {
   opacity: 1;
-  transform: translateY(0.25rem);
+  transform: translate(-30%, 10px);
 }
 
 .nav-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #eae9e5;
-  padding: 0.5rem 2rem;
+  background-color: #f9ecf5;
+  padding: 0.1rem 2rem;
+  border-bottom: 1px solid #0a0307;
 }
 
 .nav-left img {
   display: block;
+  width: 40px;
+  height: 40px;
 }
 
 .menu-items {
@@ -201,23 +133,23 @@ img:hover {
 .menu-button {
   background: none;
   border: none;
-  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
   font-size: 0.875rem;
   cursor: pointer;
-  color: #0e0d0c;
+  color: #0a0307;
   padding: 0.25rem 0.5rem;
   border-radius: 999px;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out
 }
 
 .menu-button:hover {
-  color: #eae9e5;
-  background-color: #0e0d0c;
+  color: #f9ecf5;
+  background-color: #0a0307;
 }
 
 .router-link-exact-active {
-  color: #eae9e5;
-  background-color: #0e0d0c;
+  color: #f9ecf5;
+  background-color: #0a0307;
   transition: all 0.25s ease;
 }
 
@@ -226,7 +158,7 @@ img:hover {
   width: 100%;
   padding: 13rem 2rem;
   box-sizing: border-box;
-  background-color: #eae9e5;
+  background-color: #f9ecf5;
   min-height: 100vh;
 }
 
