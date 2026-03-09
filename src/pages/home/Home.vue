@@ -12,6 +12,20 @@ const quitarHover = () => {
   iconoMenu1.value = imagenDefault;
 }
 
+const botones = Array(6).fill(0).map((_, i) => ({
+  id: i,
+  imagen: '/imagenes/post-it-1.png',
+  hoverImagen: '/imagenes/post-it-2.png',
+  current: ref('/imagenes/post-it-1.png')
+}));
+
+const mouseEnter = (boton: any) => {
+  boton.current.value = boton.hoverImagen;
+}
+const mouseLeave = (boton: any) => {
+  boton.current.value = boton.imagen;
+}
+
 </script>
 
 
@@ -53,11 +67,36 @@ const quitarHover = () => {
   <div class="contenedor">
     <div class="contenido">
       <div class="intro">
-
-        <img src="/imagenes/de-hecho-yo.png" alt="yo" class="hero-image">
         <p class="intro-text">nice to meet you, my name is Claudia, a soon to be illustrator</p>
+       
+       <picture class="hero-picture">
+        <source srcset="/imagenes/de-hecho-yo.png"
+        alt="yo"
+        class="hero-image"
+        >
+
+        <img src="/imagenes/de-hecho-yo.png" 
+        alt="yo"
+        class="hero-image"
+        >
+       </picture>
+    </div>
+
+    
+    <div class="postit-grid">
+      <div
+      v-for="boton in botones"
+      :key="boton.id"
+      class="postit-button"
+      @mouseenter="mouseEnter(boton)"
+      @mouseleave="mouseLeave(boton)"
+      >
+    
+      <img :src="boton.current.value" alt="post-it">
 
     </div>
+    </div>
+
     </div>
   </div>
 
@@ -76,29 +115,71 @@ const quitarHover = () => {
 
 <style>
 
+.postit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.postit-button img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  transition: all 0.3s ease;
+  display: block;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .postit-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .postit-button img {
+    max-width: 180px;
+  }
+}
+
 .intro {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
-  min-height: 60vh;
-  text-align: center;
-  padding: 0 1rem;
+  padding: clamp(4rem, 10vw, 8rem) clamp(2rem, 5vw, 6rem);
+  text-align: left;
+  align-items: center;
+  transition: padding 0.3s ease, gap 0.3s ease;
+}
+
+.hero-picture img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.intro > * {
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.3s ease;
 }
 
 .hero-image {
   width: 100%;
-  max-width: 550px;
+  max-width: 200px;
   height: auto;
 }
 
 .intro-text {
   font-family: "AlteHaasGroteskBold", sans-serif;
-  font-size: 2rem;
+  font-size: 1rem;
   color: #0a0d1c;
-  max-width: 600px;
+  max-width: 150px;
   line-height: 1.4;
+  margin: 0;
 }
 
 .icon-wrapper {
@@ -145,27 +226,21 @@ const quitarHover = () => {
 }
 
 @media (min-width: 768px) {
-  .menu-items {
-    gap: 2rem;
+  .intro {
+    padding: clamp(6rem, 8vw, 10rem) clamp(3rem, 6vw, 8rem);
+  }
+  .hero-picture img {
+    max-width: 300px;
   }
 }
 
 @media (min-width: 1024px) {
-  .menu-items {
-    gap: 3rem;
+  .intro {
+    padding: clamp(6rem, 8vw, 10rem) clamp(4rem, 8vw, 10rem);
   }
 }
 
-@media (min-width: 1200px) {
-  .intro {
-    flex-direction: row;
-    gap: 4rem;
-    text-align: left;
-  }
-  .intro-text {
-    font-size: 3.5rem;
-  }
-}
+
 
 .menu-button {
   background: none;
@@ -193,7 +268,7 @@ const quitarHover = () => {
 
 .contenedor {
   width: 100%;
-  padding: 13rem 2rem;
+  padding: 3rem 2rem;
   box-sizing: border-box;
   background-color: #fff9d6;
   min-height: 100vh;
@@ -206,13 +281,13 @@ const quitarHover = () => {
 
 @media (min-width: 768px) {
   .contenedor {
-    padding: 13rem 4rem;
+    padding: 10rem 4rem;
   }
 }
 
 @media (min-width: 1024px) {
   .contenedor {
-    padding: 13rem 6rem;
+    padding: 8rem 6rem;
   }
   
 }
