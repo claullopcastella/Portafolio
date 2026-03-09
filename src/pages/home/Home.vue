@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const imagenDefault = '/imagenes/Justin-Bieber-PNG.png';
 const imagenHover = '/imagenes/Justin-Bieber-PNG-hover.png';
@@ -11,6 +11,27 @@ const cambiarHover = () => {
 const quitarHover = () => {
   iconoMenu1.value = imagenDefault;
 }
+
+const imagenesAnimacion = [
+  '/imagenes/rallajo.png',
+  '/imagenes/rallajo2.png',
+  '/imagenes/rallajo3.png'
+];
+
+const imagenActual = ref(imagenesAnimacion[0]);
+let indice = 0;
+let intervalo: any;
+
+onMounted(() => {
+  intervalo = setInterval(() => {
+  indice = (indice + 1) % imagenesAnimacion.length;
+  imagenActual.value = imagenesAnimacion[indice];
+}, 500);
+});
+
+onUnmounted(() => {
+  clearInterval(intervalo);
+});
 
 </script>
 
@@ -53,7 +74,7 @@ const quitarHover = () => {
   <div class="contenedor">
     <div class="contenido">
       <div class="intro">
-
+        <img :src="imagenActual" alt="animacion-centro">
     </div>
     </div>
   </div>
@@ -72,6 +93,17 @@ const quitarHover = () => {
 
 
 <style>
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animacion-centro {
+  width: 220px;
+  height: auto;
+}
 
 .icon-wrapper {
   position: relative;
@@ -156,7 +188,7 @@ const quitarHover = () => {
 
 .contenedor {
   width: 100%;
-  padding: 13rem 2rem;
+  padding: 3rem 2rem;
   box-sizing: border-box;
   background-color: #f9ecf5;
   min-height: 100vh;
@@ -169,13 +201,13 @@ const quitarHover = () => {
 
 @media (min-width: 768px) {
   .contenedor {
-    padding: 13rem 4rem;
+    padding: 3rem 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .contenedor {
-    padding: 13rem 6rem;
+    padding: 3rem 2rem;
   }
   
 }

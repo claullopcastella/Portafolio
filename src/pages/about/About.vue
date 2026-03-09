@@ -34,7 +34,7 @@ const quitarHover = () => {
         <img
         :src="iconoMenu1"
         alt="iconoMenu"
-        class="w-16 h-16 cursor-pointer"
+        class="cursor-pointer"
         @mouseenter="cambiarHover"
         @mouseleave="quitarHover"
         />
@@ -81,12 +81,11 @@ const quitarHover = () => {
 .icon-tooltip {
   position: absolute;
   top: 100%;
-  left: 100%;
-  margin-left: 0.25rem;
+  left: 50%;
+  transform: translate(-30%, 6px);
   font-size: 0.75rem;
   font-family: "AlteHaasGroteskRegular", sans-serif;
-  color: #0a0d1c;
-  padding: 0;
+  color: #0a0307;
   background: none;
   opacity: 0;
   pointer-events: none;
@@ -96,19 +95,22 @@ const quitarHover = () => {
 
 .icon-wrapper:hover .icon-tooltip {
   opacity: 1;
-  transform: translateY(0.25rem);
+  transform: translate(-30%, 10px);
 }
 
 .nav-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff9d6;
-  padding: 0.5rem 2rem;
+  background-color: #f9ecf5;
+  padding: 0.1rem 2rem;
+  border-bottom: 1px solid #0a0307;
 }
 
 .nav-left img {
   display: block;
+  width: 40px;
+  height: 40px;
 }
 
 .menu-items {
@@ -134,20 +136,20 @@ const quitarHover = () => {
   font-family: "AlteHaasGroteskRegular", sans-serif;
   font-size: 0.875rem;
   cursor: pointer;
-  color: #0a0d1c;
+  color: #0a0307;
   padding: 0.25rem 0.5rem;
   border-radius: 999px;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out
 }
 
 .menu-button:hover {
-  color: #fff9d6;
-  background-color: #0a0d1c;
+  color: #f9ecf5;
+  background-color: #0a0307;
 }
 
 .router-link-exact-active {
-  color: #fff9d6;
-  background-color: #0a0d1c;
+  color: #f9ecf5;
+  background-color: #0a0307;
   transition: all 0.25s ease;
 }
 
@@ -156,7 +158,7 @@ const quitarHover = () => {
   width: 100%;
   padding: 13rem 2rem;
   box-sizing: border-box;
-  background-color: #fff9d6;
+  background-color: #f9ecf5;
   min-height: 100vh;
 }
 
