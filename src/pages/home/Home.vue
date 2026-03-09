@@ -54,6 +54,9 @@ const quitarHover = () => {
     <div class="contenido">
       <div class="intro">
 
+        <img src="/imagenes/de-hecho-yo.png" alt="yo" class="hero-image">
+        <p class="intro-text">nice to meet you, my name is Claudia, a soon to be illustrator</p>
+
     </div>
     </div>
   </div>
@@ -72,6 +75,31 @@ const quitarHover = () => {
 
 
 <style>
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  min-height: 60vh;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+}
+
+.intro-text {
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-size: 2rem;
+  color: #0a0d1c;
+  max-width: 600px;
+  line-height: 1.4;
+}
 
 .icon-wrapper {
   position: relative;
@@ -125,6 +153,17 @@ const quitarHover = () => {
 @media (min-width: 1024px) {
   .menu-items {
     gap: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .intro {
+    flex-direction: row;
+    gap: 4rem;
+    text-align: left;
+  }
+  .intro-text {
+    font-size: 3.5rem;
   }
 }
 
