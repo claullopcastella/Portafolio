@@ -43,9 +43,15 @@ const quitarHover = () => {
       </div>
 
       <div class="menu-items">
+
         <router-link to="/" class="menu-button">home</router-link>
         <router-link to="/about" class="menu-button">about</router-link>
-        <router-link to="/contactme" class="menu-button">contact me!</router-link>
+
+        <div class="contact-wrapper">
+          <router-link to="/contactme" class="menu-button">contact me!</router-link>
+          <img src="/imagenes/rallajo-circulo.png" class="contact-circle">
+        </div>
+
       </div>
 
   </nav>
@@ -53,7 +59,6 @@ const quitarHover = () => {
   <div class="contenedor">
     <div class="contenido">
       <div class="intro">
-
     </div>
     </div>
   </div>
@@ -72,6 +77,21 @@ const quitarHover = () => {
 
 
 <style>
+
+.contact-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.contact-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(80px, 10%, 180px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
 
 .icon-wrapper {
   position: relative;
@@ -118,17 +138,9 @@ const quitarHover = () => {
   gap: 1rem;
 }
 
-@media (min-width: 768px) {
-  .menu-items {
-    gap: 2rem;
-  }
-}
 
-@media (min-width: 1024px) {
-  .menu-items {
-    gap: 3rem;
-  }
-}
+
+
 
 .menu-button {
   background: none;
@@ -156,7 +168,7 @@ const quitarHover = () => {
 
 .contenedor {
   width: 100%;
-  padding: 13rem 2rem;
+  padding: 3rem 2rem;
   box-sizing: border-box;
   background-color: #f9ecf5;
   min-height: 100vh;
@@ -168,14 +180,24 @@ const quitarHover = () => {
 }
 
 @media (min-width: 768px) {
+
+  .menu-items {
+    gap: 2rem;
+  }
+
   .contenedor {
-    padding: 13rem 4rem;
+    padding: 3rem 2rem;
   }
 }
 
 @media (min-width: 1024px) {
+
+  .menu-items {
+    gap: 3rem;
+  }
+
   .contenedor {
-    padding: 13rem 6rem;
+    padding: 3rem 2rem;
   }
   
 }

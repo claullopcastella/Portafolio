@@ -26,7 +26,7 @@ onMounted(() => {
   intervalo = setInterval(() => {
   indice = (indice + 1) % imagenesAnimacion.length;
   imagenActual.value = imagenesAnimacion[indice];
-}, 500);
+}, 400);
 });
 
 onUnmounted(() => {
@@ -64,9 +64,15 @@ onUnmounted(() => {
       </div>
 
       <div class="menu-items">
+
         <router-link to="/" class="menu-button">home</router-link>
         <router-link to="/about" class="menu-button">about</router-link>
-        <router-link to="/contactme" class="menu-button">contact me!</router-link>
+
+        <div class="contact-wrapper">
+          <router-link to="/contactme" class="menu-button">contact me!</router-link>
+          <img src="/imagenes/rallajo-circulo.png" class="contact-circle">
+        </div>
+
       </div>
 
   </nav>
@@ -94,6 +100,21 @@ onUnmounted(() => {
 
 <style>
 
+.contact-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.contact-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(80px, 120%, 180px);
+  height: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
 .intro {
   display: flex;
   justify-content: center;
@@ -103,6 +124,7 @@ onUnmounted(() => {
 .animacion-centro {
   width: 220px;
   height: auto;
+  transform: scale(0.5);
 }
 
 .icon-wrapper {
@@ -150,17 +172,9 @@ onUnmounted(() => {
   gap: 1rem;
 }
 
-@media (min-width: 768px) {
-  .menu-items {
-    gap: 2rem;
-  }
-}
 
-@media (min-width: 1024px) {
-  .menu-items {
-    gap: 3rem;
-  }
-}
+
+
 
 .menu-button {
   background: none;
@@ -200,12 +214,22 @@ onUnmounted(() => {
 }
 
 @media (min-width: 768px) {
+
+  .menu-items {
+    gap: 2rem;
+  }
+
   .contenedor {
     padding: 3rem 2rem;
   }
 }
 
 @media (min-width: 1024px) {
+
+  .menu-items {
+    gap: 3rem;
+  }
+
   .contenedor {
     padding: 3rem 2rem;
   }
