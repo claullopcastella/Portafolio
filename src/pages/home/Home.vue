@@ -82,7 +82,7 @@ const mouseLeave = (boton: any) => {
        </picture>
     </div>
 
-    
+
     <div class="postit-grid">
       <div
       v-for="boton in botones"
@@ -121,6 +121,7 @@ const mouseLeave = (boton: any) => {
   gap: 1rem;
   margin-top: 2rem;
   justify-content: center;
+  margin: auto;
 }
 
 .postit-button img {
@@ -130,6 +131,7 @@ const mouseLeave = (boton: any) => {
   transition: all 0.3s ease;
   display: block;
   cursor: pointer;
+  margin: auto;
 }
 
 @media (min-width: 768px) {
@@ -151,6 +153,7 @@ const mouseLeave = (boton: any) => {
   text-align: left;
   align-items: center;
   transition: padding 0.3s ease, gap 0.3s ease;
+  margin: auto;
 }
 
 .hero-picture img {
@@ -158,7 +161,8 @@ const mouseLeave = (boton: any) => {
   max-width: 200px;
   height: auto;
   transition: all 0.3s ease;
-  display: block;
+  display: block;  
+  margin: auto;
 }
 
 .intro > * {
@@ -179,7 +183,7 @@ const mouseLeave = (boton: any) => {
   color: #0a0d1c;
   max-width: 150px;
   line-height: 1.4;
-  margin: 0;
+  margin: auto;
 }
 
 .icon-wrapper {
