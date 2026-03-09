@@ -121,7 +121,7 @@ onUnmounted(() => {
   max-height: 100%;
   width: auto;
   transform: translateX(-100%) translateY(-50%);
-  animation: mover-linea 4s linear infinite;
+  animation: mover-linea 9s linear infinite;
 }
 
 @keyframes mover-linea {
