@@ -88,6 +88,25 @@ onUnmounted(() => {
           <img src="/imagenes/linea.png" class="linea-animada">
         </div>
 
+        <div class="proyectos">
+
+          <button class="proyecto-btn">
+            <img src="/imagenes/ilustracion-portada.png" alt="ilustracion">
+            <span>illustration</span> 
+          </button>
+
+          <button class="proyecto-btn">
+            <img src="/imagenes/diseno-portada.jpg" alt="diseño grafico">
+            <span>illustration</span> 
+          </button>
+
+          <button class="proyecto-btn">
+            <img src="/imagenes/audiovisual-portada.jpg" alt="audiovisuales">
+            <span>illustration</span> 
+          </button>
+
+        </div>
+
     </div>
   </div>
 
@@ -105,6 +124,40 @@ onUnmounted(() => {
 
 
 <style>
+
+.proyectos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 4rem);
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.proyecto-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proyecto-btn img {
+  width: clamp(120px, 18vw, 220px);
+  height: auto;
+  transition: transform 00.25s ease;
+}
+
+.proyecto-btn:hover img {
+  transform: scale(1.05);
+}
+
+.proyecto-btn span {
+  margin-top: 0.8rem;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-size: 0.9rem;
+}
 
 .linea-wrapper {
   position: relative;

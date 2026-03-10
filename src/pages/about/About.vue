@@ -12,6 +12,8 @@ const quitarHover = () => {
   iconoMenu1.value = imagenDefault;
 }
 
+const titulo = ref("THE ARTIST")
+
 </script>
 
 
@@ -54,10 +56,42 @@ const quitarHover = () => {
 
       </div>
 
+
   </nav>
 
   <div class="contenedor">
     <div class="contenido">
+        <h1 class="nav-title">{{  titulo  }}</h1>
+
+        <hr class="dashed-line">
+        <p class="main-line">CLAU</p>
+        <hr class="dashed-line">
+
+        <p class="main-line">BIRTHDAY:</p>
+        <p class="main-line">STAR SIGN:</p>
+        <p class="main-line">ART-STYLE:</p>
+        <p class="main-line">QUALITIES:</p>
+        <p class="main-line">WORK-METHOD:</p>
+
+        <hr class="dashed-line">
+        <p class="sub-line">Real name:</p>
+        <hr class="dashed-line">
+
+        <p class="sub-line">Specialty:</p>
+        <hr class="dashed-line">
+
+        <p class="sub-line">Hometown:</p>
+        <hr class="dashed-line">
+
+        <p class="sub-line">Student at:</p>
+        <hr class="dashed-line">
+
+        <p class="sub-line">Previous studies:</p>
+        <hr class="dashed-line">
+
+        <p class="sub-line">Favorite cartoon:</p>
+        <hr class="dashed-line">
+
       <div class="intro">
     </div>
     </div>
@@ -77,6 +111,41 @@ const quitarHover = () => {
 
 
 <style>
+.main-line {
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  letter-spacing: 0.1em;
+  color: #0a0307;
+  margin: 0.5rem 0;
+}
+
+.sub-line {
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #0a0307;
+  margin: 1.5rem 0 0.1rem 0;
+}
+
+.dashed-line {
+  border: none;
+  height: 1.5px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #0a0307 0%,
+    #0a0307 2%,
+    transparent 2%,
+    transparent 4%
+  );
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.nav-title {
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  letter-spacing: 0.1em;
+  color: #0a0307;
+  margin-bottom: 0.5rem;
+}
 
 .contact-wrapper {
   position: relative;
@@ -168,15 +237,14 @@ const quitarHover = () => {
 
 .contenedor {
   width: 100%;
-  padding: 3rem 2rem;
-  box-sizing: border-box;
+  padding: 7rem 0 3rem 0;
   background-color: #f9ecf5;
   min-height: 100vh;
 }
 
 .contenido {
   margin: 0 auto;
-  max-width: 1400px;
+  width: min(90%, 1100px);
 }
 
 @media (min-width: 768px) {
@@ -185,9 +253,6 @@ const quitarHover = () => {
     gap: 2rem;
   }
 
-  .contenedor {
-    padding: 3rem 2rem;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -196,9 +261,5 @@ const quitarHover = () => {
     gap: 3rem;
   }
 
-  .contenedor {
-    padding: 3rem 2rem;
-  }
-  
 }
 </style>
