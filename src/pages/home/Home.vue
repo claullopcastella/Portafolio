@@ -162,7 +162,7 @@ onUnmounted(() => {
 .linea-wrapper {
   position: relative;
   width: 100%;
-  height: 50px; /* fixed height to keep element visible */
+  height: 50px; 
   overflow: hidden;
   margin: 0.5rem 0 2rem 0;
 }
@@ -173,17 +173,7 @@ onUnmounted(() => {
   left: 0;
   max-height: 100%;
   width: auto;
-  transform: translateX(-100%) translateY(-50%);
-  animation: mover-linea 9s linear infinite;
-}
-
-@keyframes mover-linea {
-  0% {
-    transform: translateX(-100%) translateY(-50%);
-  }
-  100% {
-    transform: translateX(100%) translateY(-50%);
-  }
+  transform: translateY(-50%);
 }
 
 .contact-wrapper {

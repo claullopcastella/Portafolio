@@ -12,8 +12,6 @@ const quitarHover = () => {
   iconoMenu1.value = imagenDefault;
 }
 
-const titulo = ref("THE ARTIST")
-
 </script>
 
 
@@ -61,7 +59,11 @@ const titulo = ref("THE ARTIST")
 
   <div class="contenedor">
     <div class="contenido">
-        <h1 class="nav-title">{{  titulo  }}</h1>
+        <h1 class="nav-title">
+          THE <span class="artist-word">ARTIST
+            <img src="/imagenes/notyet.png" class="notyet-img">
+          </span>
+        </h1>
 
         <hr class="dashed-line">
         <p class="main-line">CLAU</p>
@@ -70,31 +72,31 @@ const titulo = ref("THE ARTIST")
       <div class="with-photo">
         <img src="/imagenes/CLAU.png" alt="CLAU" class="mi-foto">
         <div class="text-block">
-          <p class="main-line">:BIRTHDAY</p>
-          <p class="main-line">:STAR SIGN</p>
-          <p class="main-line">:ART-STYLE</p>
-          <p class="main-line">:QUALITIES</p>
-          <p class="main-line">:WORK-METHOD</p>
+          <p class="main-line">BIRTHDAY: <span class="answer">11-11-2006</span></p>
+          <p class="main-line">STAR SIGN: <span class="answer">Scorpio</span></p>
+          <p class="main-line">ART-STYLE: <span class="answer">Expressive</span></p>
+          <p class="main-line">QUALITIES: <span class="answer">Not sure</span></p>
+          <p class="main-line">WORK-METHOD: <span class="answer">Digital</span></p>
         </div>
       </div>
       
         <hr class="dashed-line">
-        <p class="sub-line">Real name:</p>
+        <p class="sub-line">Real name: <span class="answer">Claudia Llop Castellà</span></p>
         <hr class="dashed-line">
 
-        <p class="sub-line">Specialty:</p>
+        <p class="sub-line">Specialty: <span class="answer">Illustration and Concept Art</span></p>
         <hr class="dashed-line">
 
-        <p class="sub-line">Hometown:</p>
+        <p class="sub-line">Hometown: <span class="answer">Valencia, Spain</span></p>
         <hr class="dashed-line">
 
-        <p class="sub-line">Student at:</p>
+        <p class="sub-line">Student at: <span class="answer">Polytechnic University of Valencia</span></p>
         <hr class="dashed-line">
 
-        <p class="sub-line">Previous studies:</p>
+        <p class="sub-line">Previous studies: <span class="answer">Arts Bachelor</span></p>
         <hr class="dashed-line">
 
-        <p class="sub-line">Favorite cartoon:</p>
+        <p class="sub-line">Favorite cartoon: <span class="answer">Pokemon</span></p>
         <hr class="dashed-line">
 
       <div class="intro">
@@ -117,15 +119,37 @@ const titulo = ref("THE ARTIST")
 
 <style>
 
+.answer {
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  transform: none;
+}
+
+.artist-word {
+  position: relative;
+  display: inline-block;
+}
+
+.notyet-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -20%);
+
+  height: 100%;
+  width: auto;
+
+  pointer-events: none;
+}
+
 .with-photo {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 2rem;
 }
 
 .with-photo .mi-foto{
-  width: clamp(150px, 20%, 250px);
+  width: clamp(200px, 28%, 420px);
   height: auto;
   object-fit: cover;
 }
@@ -146,8 +170,10 @@ const titulo = ref("THE ARTIST")
 }
 
 .sub-line {
-  font-family: "BarlowCondensed-Medium", sans-serif;
+  font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.5rem);
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   color: #0a0307;
   margin: 1.8rem 0 0.2rem 0;
 }
