@@ -111,7 +111,7 @@ onUnmounted(() => {
   width: 100%;
   height: 50px; /* fixed height to keep element visible */
   overflow: hidden;
-  margin: 2rem 0;
+  margin: 0.5rem 0 2rem 0;
 }
 
 .linea-animada {
