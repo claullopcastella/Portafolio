@@ -67,12 +67,17 @@ const titulo = ref("THE ARTIST")
         <p class="main-line">CLAU</p>
         <hr class="dashed-line">
 
-        <p class="main-line">BIRTHDAY:</p>
-        <p class="main-line">STAR SIGN:</p>
-        <p class="main-line">ART-STYLE:</p>
-        <p class="main-line">QUALITIES:</p>
-        <p class="main-line">WORK-METHOD:</p>
-
+      <div class="with-photo">
+        <img src="/imagenes/CLAU.png" alt="CLAU" class="mi-foto">
+        <div class="text-block">
+          <p class="main-line">:BIRTHDAY</p>
+          <p class="main-line">:STAR SIGN</p>
+          <p class="main-line">:ART-STYLE</p>
+          <p class="main-line">:QUALITIES</p>
+          <p class="main-line">:WORK-METHOD</p>
+        </div>
+      </div>
+      
         <hr class="dashed-line">
         <p class="sub-line">Real name:</p>
         <hr class="dashed-line">
@@ -111,32 +116,46 @@ const titulo = ref("THE ARTIST")
 
 
 <style>
+
+.with-photo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.with-photo .mi-foto{
+  width: clamp(150px, 20%, 250px);
+  height: auto;
+  object-fit: cover;
+}
+
+.with-photo .text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .main-line {
   font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.5rem);
-  letter-spacing: 0.1em;
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   color: #0a0307;
   margin: 0.5rem 0;
 }
 
 .sub-line {
-  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-family: "BarlowCondensed-Medium", sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   color: #0a0307;
-  margin: 1.5rem 0 0.1rem 0;
+  margin: 1.8rem 0 0.2rem 0;
 }
 
 .dashed-line {
   border: none;
-  height: 1.5px;
-  background-image: repeating-linear-gradient(
-    to right,
-    #0a0307 0%,
-    #0a0307 2%,
-    transparent 2%,
-    transparent 4%
-  );
-  margin: 0.5rem 0 0.5rem 0;
+  border-bottom: 1.5px dashed #0a0307;
+  margin: 0.2rem 0;
 }
 
 .nav-title {
@@ -214,7 +233,7 @@ const titulo = ref("THE ARTIST")
 .menu-button {
   background: none;
   border: none;
-  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: 0.875rem;
   cursor: pointer;
   color: #0a0307;

@@ -39,6 +39,16 @@
 }
 
 @font-face {
+  font-family: "BarlowCondensed-Medium";
+  src: url("/fonts/BarlowCondensed-Medium.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "BarlowCondensed-Regular";
+  src: url("/fonts/BarlowCondensed-Regular.ttf") format("opentype");
+}
+
+@font-face {
   font-family: "AlteHaasGroteskBold";
   src: url("/fonts/AlteHaasGroteskBold.ttf") format("opentype");
 }
