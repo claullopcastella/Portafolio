@@ -103,8 +103,7 @@ const quitarHover = () => {
         <p class="sub-line">Favorite cartoon: <span class="answer">Pokemon</span></p>
         <hr class="dashed-line">
 
-      <div class="intro">
-    </div>
+
     </div>
   </div>
 

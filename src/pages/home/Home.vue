@@ -88,7 +88,7 @@ onUnmounted(() => {
         </div>
         </div>
 
-        <p class="projects-title">these are some of my projects</p>
+        <p class="projects-title">Let me show you my work</p>
 
         <div class="proyectos">
 
@@ -111,19 +111,21 @@ onUnmounted(() => {
 
       <div class="redes-sociales">
         <a href="https://www.instagram.com/claudllop/" target="_blank">
-          <img src="/imagenes/instagram.png" alt="instagram" class="red-social-icon">
+          <img src="/imagenes/instagram.png" alt="instagram" class="icon-small">
         </a>        
       </div>
 
+      <div class="bottom-contact">
       <div class="contact-info">
         <div class="contact-item">
-          <img src="/imagenes/telefono.png" alt="Teléfono" class="contact-icon">
+          <img src="/imagenes/telefono.png" alt="Teléfono" class="icon-small">
           <span>+34 633 77 62 62</span>
         </div>
         <div class="contact-item">
-          <img src="/imagenes/email.png" alt="Email" class="contact-icon">
+          <img src="/imagenes/email.png" alt="Email" class="icon-small">
           <span>claudllopart@gmail.com</span>
         </div>
+      </div>
       </div>
 
     </div>
@@ -144,29 +146,42 @@ onUnmounted(() => {
 
 <style>
 
-.contact-info {
+.bottom-contact {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 2rem;
+  flex-shrink: wrap;
   margin: 2rem 0;
+  gap: 2rem;
+}
+
+.icon-small {
+  width: clamp(25px, 3vw, 40px);
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.redes-sociales .icon-small:hover {
+  transform: scale(1.1);
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   font-family: "AlteHaasGroteskRegular", sans-serif;
   letter-spacing: -0.02em;
   transform: scaleY(1.2);
   font-size: 1rem;
   color: #0a0307;
-}
-
-.contact-icon {
-  width: clamp(40px, 5vw, 60px);
-  height: auto;
 }
 
 .redes-sociales {
