@@ -83,34 +83,30 @@ onUnmounted(() => {
         <img :src="imagenActual" alt="animacion-centro">
         
         <div class="intro-text">
-          <h2 class="intro-title">welcome!</h2>
-          <p class="intro-description">aqui va el texto de introduccion</p>
+          <h2 class="intro-title">Welcome!</h2>
+          <p class="intro-description">I'm a graphic designer and illustrator. My goal is to explore the different possibilities within graphic fields, adding a personal touch to each project.</p>
       </div>
       </div>
 
         <p class="projects-title">these are some of my projects</p>
-        
-        <div class="linea-wrapper">
-          <img src="/imagenes/linea.png" class="linea-animada">
-        </div>
 
         <div class="proyectos">
 
-          <button class="proyecto-btn">
-            <img src="/imagenes/ilustracion-portada.png" alt="ilustracion">
-            <span>illustration</span> 
-          </button>
+          <router-link to="/illustration" class="proyecto-btn">
+            <img src="/imagenes/vertexp.png" alt="vertex">
+          </router-link>
 
-          <button class="proyecto-btn">
-            <img src="/imagenes/diseno-portada.jpg" alt="diseño grafico">
-            <span>illustration</span> 
-          </button>
+          <router-link to="/graphicdesign" class="proyecto-btn">
+            <img src="/imagenes/celebremos.png" alt="celebremos">
+          </router-link>
 
-          <button class="proyecto-btn">
-            <img src="/imagenes/audiovisual-portada.jpg" alt="audiovisuales">
-            <span>illustration</span> 
-          </button>
+          <router-link to="/filmography" class="proyecto-btn">
+            <img src="/imagenes/audiovisuales-portada.png" alt="audiovisuales">
+          </router-link>
 
+        </div>
+                <div class="linea-wrapper">
+          <img src="/imagenes/linea.png" class="linea-animada">
         </div>
 
     </div>
@@ -148,6 +144,7 @@ onUnmounted(() => {
 .intro-text {
   flex: 1;
   text-align: right;
+  max-width: 500px;
 }
 
 @media (max-width: 1199px) {
@@ -158,6 +155,7 @@ onUnmounted(() => {
 
   .intro-text {
     text-align: right;
+    max-width: 400px;
   }
 }
 
@@ -183,6 +181,8 @@ onUnmounted(() => {
 .intro-title {
   font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   color: #0a0307;
   margin: 0 0 0.5rem 0;
 }
@@ -190,6 +190,8 @@ onUnmounted(() => {
 .intro-description {
   font-family: "AlteHaasGroteskRegular", sans-serif;
   font-size: clamp(1rem, 1.6vw, 1.3rem);
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   color: #0a0307;
   line-height: 1.5;
   margin: 0;
@@ -198,6 +200,8 @@ onUnmounted(() => {
 .projects-title {
   font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   color: #0a0307;
   margin: 4rem 0 1rem 0;
   text-align: center;
@@ -213,16 +217,21 @@ onUnmounted(() => {
 }
 
 .proyecto-btn {
+  width: clamp(240px, 28vw, 420px);
+  height: clamp(240px, 28vw, 420px);
+  justify-content: center;
   background: none;
   border: none;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .proyecto-btn img {
-  width: clamp(120px, 18vw, 220px);
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
   transition: transform 00.25s ease;
 }
