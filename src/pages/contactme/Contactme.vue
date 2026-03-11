@@ -113,6 +113,8 @@ const reservarCita = () => {
 .nav-title {
   font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: clamp(2.2rem, 6vw, 4.5rem);
+   letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   color: #0a0307;
   margin-bottom: 2rem;
   text-align: center;
@@ -139,6 +141,8 @@ const reservarCita = () => {
   margin-bottom: 1rem;
   font-family: "AlteHaasGroteskBold", sans-serif;
   color: #0a0307;
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
 }
 
 .formulario input, .formulario select, .formulario button {
@@ -148,8 +152,10 @@ const reservarCita = () => {
   padding: 0.5rem;
   font-size: 1rem;
   font-family: "AlteHaasGroteskRegular", sans-serif;
+   letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #0a0307;
   box-sizing: border-box;
 }
 
@@ -186,6 +192,8 @@ const reservarCita = () => {
   width: 100%;
   border-collapse: collapse;
   font-family: "AlteHaasGroteskRegular", sans-serif;
+ letter-spacing: -0.02em;
+  transform: scaleY(1.2);
 }
 
 .calendario th, .calendario td {
@@ -259,6 +267,8 @@ const reservarCita = () => {
   border: none;
   font-family: "AlteHaasGroteskRegular", sans-serif;
   font-size: 0.875rem;
+ letter-spacing: -0.02em;
+  transform: scaleY(1.2);
   cursor: pointer;
   color: #0a0307;
   padding: 0.25rem 0.5rem;

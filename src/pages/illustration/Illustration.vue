@@ -65,34 +65,40 @@ const posiciones = computed(() =>
   </nav>
 
   <div class="contenedor">
-    <h1 class="nav-title">ILLUSTRATIONS</h1>
+    <div class="work-switch">
+      <router-link to="/illustration" class="work-link">Illustration</router-link>
+      <router-link to="/graphicdesign" class="work-link">Graphic Design</router-link>
+      <router-link to="/filmography" class="work-link">Filmography</router-link>
+    </div>
+
+    <h1 class="nav-title">ILLUSTRATION</h1>
 
     <div class="carousel-wrapper">
       <button class="arrow left" @click="anterior">
-        <img src="/imagenes/flechaizquierda.png" alt="Anterior" class="arrow-icon" />
+        <span class="arrow-shape"></span>
       </button>
 
-        <div class="carousel">
-          <div
-            v-for="(img, i) in ilustraciones"
-            :key="i"
-            class="carousel-item"
-            @click="irA(i)"
-            v-bind:style="(() => {
-              const pos = posiciones[i] || { offset: 0, scale: 0.7, zIndex: 5, opacity: 0.7 };
-              return {
-                transform: `translateX(${pos.offset * 180}px) scale(${pos.scale})`,
-                zIndex: pos.zIndex,
-                opacity: pos.opacity
-              };
-            })()"
-          >
-    <img :src="img" alt="ilustración" />
-  </div>
-</div>
+      <div class="carousel">
+        <div
+          v-for="(img, i) in ilustraciones"
+          :key="i"
+          class="carousel-item"
+          @click="irA(i)"
+          v-bind:style="(() => {
+            const pos = posiciones[i] || { offset: 0, scale: 0.7, zIndex: 5, opacity: 0.7 };
+            return {
+              transform: `translateX(${pos.offset * 180}px) scale(${pos.scale})`,
+              zIndex: pos.zIndex,
+              opacity: pos.opacity
+            };
+          })()"
+        >
+          <img :src="img" alt="ilustración" />
+        </div>
+      </div>
 
       <button class="arrow right" @click="siguiente">
-        <img src="/imagenes/flechaderecha.png" alt="Siguiente" class="arrow-icon" />
+        <span class="arrow-shape"></span>
       </button>
     </div>
 
@@ -103,9 +109,39 @@ const posiciones = computed(() =>
 </template>
 
 <style>
+.work-switch{
+  position:absolute;
+  top:60px;
+  left:20px;
+  right:20px;
+  display:flex;
+  justify-content:space-between;
+  font-family:"AlteHaasGroteskRegular", sans-serif;
+  font-size:0.85rem;
+}
+
+.work-link{
+  text-decoration:none;
+  color:#0a0307;
+  padding:0.2rem 0.5rem;
+  border-radius:999px;
+  transition:0.3s;
+}
+
+.work-link:hover{
+  background:#0a0307;
+  color:#f9ecf5;
+}
+
+.work-link.router-link-active{
+  background:#0a0307;
+  color:#f9ecf5;
+}
+
 .contenedor {
+  position: relative;
   width: 100%;
-  padding: 3rem 2rem;
+  padding: 6rem 2rem 3rem;
   box-sizing: border-box;
   background-color: #f9ecf5;
   min-height: 100vh;
@@ -116,6 +152,7 @@ const posiciones = computed(() =>
   font-size: clamp(2.2rem, 6vw, 4.5rem);
   letter-spacing: 0.1em;
   color: #0a0307;
+  margin-top: 4rem;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -156,21 +193,52 @@ const posiciones = computed(() =>
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 20;
-  width: 60px;
-  height: 60px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f9ecf5;
+  border: 1px solid #0a0307;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.arrow-icon {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.arrow:hover {
+  background: #e5d5e1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.arrow-shape {
+  position: relative;
+  width: 12px;
+  height: 4px;
+}
+
+.arrow-shape::before,
+.arrow-shape::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background: #0a0307;
+  left: 0;
+}
+
+.arrow-shape::before {
+  transform: rotate(25deg);
+  top: 0;
+}
+
+.arrow-shape::after {
+  transform: rotate(-25deg);
+  bottom: 0;
+}
+
+.arrow.right .arrow-shape {
+  transform: rotate(180deg);
 }
 
 .arrow.left { left: 10px; }
