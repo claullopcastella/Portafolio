@@ -192,17 +192,6 @@ onUnmounted(() => {
   margin: 2rem 0;
 }
 
-.red-social-icon {
-  width: clamp(40px, 5vw, 60px);
-  height: auto;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.red-social-icon:hover {
-  transform: scale(1.1);
-}
-
 .intro {
   display: flex;
   flex-wrap: nowrap;

@@ -3,50 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-  font-family: "perfectly-nineties-regular";
-  src: url("/fonts/perfectly-nineties-regular.otf") format("opentype");
-}
 
-@font-face {
-  font-family: "Delirium-One";
-  src: url("/fonts/Delirium-One.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Dokdo-Regular";
-  src: url("/fonts/Dokdo-Regular.ttf") format("opentype");
-}
-
-@font-face {
-  font-family: "RobotoMono-Medium";
-  src: url("/fonts/RobotoMono-Medium.ttf") format("opentype");
-}
-
-@font-face {
-  font-family: "RobotoMono-MediumItalic";
-  src: url("/fonts/RobotoMono-MediumItalic.ttf") format("opentype");
-}
-
-@font-face {
-  font-family: "RobotoMono-Light";
-  src: url("/fonts/RobotoMono-Light.ttf") format("opentype");
-}
-
-@font-face {
-  font-family: "DJGROSS";
-  src: url("/fonts/DJGROSS.ttf") format("opentype");
-}
-
-@font-face {
-  font-family: "BarlowCondensed-Medium";
-  src: url("/fonts/BarlowCondensed-Medium.ttf") format("opentype");
-}
-
-@font-face {
-  font-family: "BarlowCondensed-Regular";
-  src: url("/fonts/BarlowCondensed-Regular.ttf") format("opentype");
-}
 
 @font-face {
   font-family: "AlteHaasGroteskBold";

@@ -10,11 +10,6 @@ const horaSeleccionada = ref('');
 const nombre = ref('');
 const email = ref('');
 
-const horasDisponibles = [
-  '09:00', '10:00', '11:00', '12:00',
-  '14:00', '15:00', '16:00', '17:00'
-];
-
 const reservarCita = () => {
   if (!fechaSeleccionada.value || !horaSeleccionada.value || !nombre.value || !email.value) {
     alert('Please fill all fields to continue!');
@@ -201,16 +196,6 @@ const mesAnterior = () => {
   margin: 2rem 0;
 }
 
-.red-social-icon {
-  width: clamp(40px, 5vw, 60px);
-  height: auto;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.red-social-icon:hover {
-  transform: scale(1.1);
-}
 .mes-navegacion button {
   background: none;
   border: none;
