@@ -61,7 +61,9 @@ const reservarCita = () => {
 
         <div class="button-wrapper">
           <img src="/imagenes/flechascal.png" class="flecha-cal" :class="{ active: fechaSeleccionada && horaSeleccionada }" />
-          <button @click="reservarCita">Book appointment</button>
+          <button class="appointment-button" @click="reservarCita">
+           Book appointment
+          </button>
         </div>
       </div>
 
@@ -83,7 +85,24 @@ const reservarCita = () => {
   </div>
 </template>
 
-<style scoped>
+<style>
+.appointment-button {
+  background: none;
+  border: none;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: #0a0307;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.appointment-button:hover {
+  color: #f9ecf5;
+  background-color: #0a0307;
+}
+
 .contenedor {
   width: 100%;
   padding: 3rem 2rem;
