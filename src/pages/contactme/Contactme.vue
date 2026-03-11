@@ -158,12 +158,6 @@ const reservarCita = () => {
   border: 1px solid #0a0307;
   box-sizing: border-box;
 }
-
-.button-wrapper {
-  position: relative;
-  width: 100%;
-}
-
 .flecha-cal {
   position: absolute;
   top: -40px;
@@ -174,6 +168,13 @@ const reservarCita = () => {
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.7;
   pointer-events: none;
+  z-index: 10; 
+}
+
+.button-wrapper {
+  position: relative;
+  width: 100%;
+  z-index: 1;
 }
 
 .button-wrapper:hover .flecha-cal,

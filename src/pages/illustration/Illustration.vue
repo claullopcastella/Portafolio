@@ -66,7 +66,10 @@ const posiciones = computed(() =>
 
   <div class="contenedor">
     <div class="work-switch">
-      <router-link to="/illustration" class="work-link">Illustration</router-link>
+      <div class="work-link-wrapper">
+        <router-link to="/illustration" class="work-link">Illustration</router-link>
+        <img v-if="$route.path === '/illustration'" src="/imagenes/rayitai.png" class="work-icon-overlay" />
+      </div>
       <router-link to="/graphicdesign" class="work-link">Graphic Design</router-link>
       <router-link to="/filmography" class="work-link">Filmography</router-link>
     </div>
@@ -109,33 +112,50 @@ const posiciones = computed(() =>
 </template>
 
 <style>
-.work-switch{
-  position:absolute;
-  top:60px;
-  left:20px;
-  right:20px;
-  display:flex;
-  justify-content:space-between;
-  font-family:"AlteHaasGroteskRegular", sans-serif;
-  font-size:0.85rem;
+.work-switch {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-size: 0.85rem;
 }
 
-.work-link{
-  text-decoration:none;
-  color:#0a0307;
-  padding:0.2rem 0.5rem;
-  border-radius:999px;
-  transition:0.3s;
+.work-link-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
-.work-link:hover{
-  background:#0a0307;
-  color:#f9ecf5;
+.work-link {
+  text-decoration: none;
+  color: #0a0307;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  transition: 0.3s;
+  position: relative;
 }
 
-.work-link.router-link-active{
-  background:#0a0307;
-  color:#f9ecf5;
+.work-link:hover {
+  background: #0a0307;
+  color: #f9ecf5;
+}
+
+.work-link.router-link-active {
+  background: #0a0307;
+  color: #f9ecf5;
+}
+
+.work-icon-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  transform: translate(25%, 50%);
 }
 
 .contenedor {

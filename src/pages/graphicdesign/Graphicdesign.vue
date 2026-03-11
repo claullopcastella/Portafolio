@@ -66,7 +66,10 @@ const posiciones = computed(() =>
   <div class="contenedor">
     <div class="work-switch">
       <router-link to="/illustration" class="work-link">Illustration</router-link>
-      <router-link to="/graphicdesign" class="work-link">Graphic Design</router-link>
+      <div class="work-link-wrapper">
+        <router-link to="/graphicdesign" class="work-link">Graphic Design</router-link>
+        <img v-if="$route.path === '/graphicdesign'" src="/imagenes/rayitad.png" class="work-icon-overlay" />
+      </div>
       <router-link to="/filmography" class="work-link">Filmography</router-link>
     </div>
 
@@ -117,6 +120,12 @@ const posiciones = computed(() =>
   justify-content:space-between;
   font-family:"AlteHaasGroteskRegular", sans-serif;
   font-size:0.85rem;
+  gap:20px;
+}
+
+.work-link-wrapper{
+  position:relative;
+  display:inline-block;
 }
 
 .work-link{
@@ -135,6 +144,16 @@ const posiciones = computed(() =>
 .work-link.router-link-active{
   background:#0a0307;
   color:#f9ecf5;
+}
+
+.work-icon-overlay{
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:50px;
+  height:50px;
+  pointer-events:none;
+  transform:translate(25%,50%);
 }
 
 .contenedor {
