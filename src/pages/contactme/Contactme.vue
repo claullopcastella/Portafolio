@@ -141,9 +141,9 @@ const reservarCita = () => {
 
 .flecha-cal {
   position: absolute;
-  bottom: 100%;
+  top: -40px;
   left: 50%;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%);
   width: 140%;
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -245,6 +245,11 @@ const reservarCita = () => {
   padding: 0.25rem 0.5rem;
   border-radius: 999px;
   transition: color 0.3s, background-color 0.3s;
+}
+
+.menu-button.router-link-active {
+  background-color: #0a0307; 
+  color: #f9ecf5;
 }
 
 .menu-button:hover {
