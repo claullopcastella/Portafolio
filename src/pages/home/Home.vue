@@ -85,8 +85,8 @@ onUnmounted(() => {
         <div class="intro-text">
           <h2 class="intro-title">Welcome!</h2>
           <p class="intro-description">I'm a graphic designer and illustrator. My goal is to explore the different possibilities within graphic fields, adding a personal touch to each project.</p>
-      </div>
-      </div>
+        </div>
+        </div>
 
         <p class="projects-title">these are some of my projects</p>
 
@@ -107,7 +107,24 @@ onUnmounted(() => {
         </div>
                 <div class="linea-wrapper">
           <img src="/imagenes/linea.png" class="linea-animada">
+      </div>
+
+      <div class="redes-sociales">
+        <a href="https://www.instagram.com/claudllop/" target="_blank">
+          <img src="/imagenes/instagram.png" alt="instagram" class="red-social-icon">
+        </a>        
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <img src="/imagenes/telefono.png" alt="Teléfono" class="contact-icon">
+          <span>+34 633 77 62 62</span>
         </div>
+        <div class="contact-item">
+          <img src="/imagenes/email.png" alt="Email" class="contact-icon">
+          <span>claudllopart@gmail.com</span>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -126,6 +143,50 @@ onUnmounted(() => {
 
 
 <style>
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
+  font-size: 1rem;
+  color: #0a0307;
+}
+
+.contact-icon {
+  width: clamp(40px, 5vw, 60px);
+  height: auto;
+}
+
+.redes-sociales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.red-social-icon {
+  width: clamp(40px, 5vw, 60px);
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.red-social-icon:hover {
+  transform: scale(1.1);
+}
 
 .intro {
   display: flex;
