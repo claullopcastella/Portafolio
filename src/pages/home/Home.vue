@@ -133,20 +133,32 @@ onUnmounted(() => {
 
 .intro {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
-.intro-img {
-  max-width: 400px;
-  width: 100%;
+.intro img {
+  max-width: 550px;
+  width: 35%;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .intro-text {
   flex: 1;
   text-align: right;
-  max-width: 400px;
+}
+
+@media (max-width: 1199px) {
+  .intro img {
+    width: 30%;
+    max-width: 450;
+  }
+
+  .intro-text {
+    text-align: right;
+  }
 }
 
 @media (max-width: 767px) {
@@ -162,8 +174,8 @@ onUnmounted(() => {
     max-width: 300px;
   }
 
-  .intro-img {
-    width: 100%;
+  .intro img {
+    width: 80%;
     max-width: 300px;
   }
 }
