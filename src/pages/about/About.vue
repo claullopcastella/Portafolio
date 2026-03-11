@@ -75,7 +75,11 @@ const quitarHover = () => {
           <p class="main-line">BIRTHDAY: <span class="answer">11-11-2006</span></p>
           <p class="main-line">STAR SIGN: <span class="answer">Scorpio</span></p>
           <p class="main-line">ART-STYLE: <span class="answer">Expressive</span></p>
-          <p class="main-line">QUALITIES: <span class="answer">Not sure</span></p>
+          <p class="main-line">QUALITIES: 
+            <span class="answer cross-word">Not sure
+              <img src="/imagenes/tachar.png" class="cross-img">
+            </span>
+          </p>
           <p class="main-line">WORK-METHOD: <span class="answer">Digital</span></p>
         </div>
       </div>
@@ -118,6 +122,23 @@ const quitarHover = () => {
 
 
 <style>
+
+.cross-word {
+  position: relative;
+  display: inline-block;
+}
+
+.cross-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  height: 100%;
+  width: auto;
+
+  pointer-events: none;
+}
 
 .answer {
   font-family: "AlteHaasGroteskRegular", sans-serif;

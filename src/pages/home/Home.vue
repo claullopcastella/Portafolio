@@ -81,8 +81,14 @@ onUnmounted(() => {
     <div class="contenido">
       <div class="intro">
         <img :src="imagenActual" alt="animacion-centro">
+        
+        <div class="intro-text">
+          <h2 class="intro-title">welcome!</h2>
+          <p class="intro-description">aqui va el texto de introduccion</p>
       </div>
-        <p>these are some of my projects</p>
+      </div>
+
+        <p class="projects-title">these are some of my projects</p>
         
         <div class="linea-wrapper">
           <img src="/imagenes/linea.png" class="linea-animada">
@@ -124,6 +130,66 @@ onUnmounted(() => {
 
 
 <style>
+
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.intro-img {
+  max-width: 400px;
+  width: 100%;
+}
+
+.intro-text {
+  flex: 1;
+  text-align: right;
+  max-width: 400px;
+}
+
+@media (max-width: 767px) {
+  .intro {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-text {
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .intro-img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.intro-title {
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: #0a0307;
+  margin: 0 0 0.5rem 0;
+}
+
+.intro-description {
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  color: #0a0307;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.projects-title {
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  color: #0a0307;
+  margin: 4rem 0 1rem 0;
+  text-align: center;
+}
 
 .proyectos {
   display: flex;
@@ -189,27 +255,6 @@ onUnmounted(() => {
   height: auto;
   transform: translate(-50%, -50%);
   pointer-events: none;
-}
-
-.intro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.intro + p {
-  font-family: "AlteHaasGroteskBold", sans-serif;
-  font-size: 2rem;
-  text-align: left;
-  margin-top: 6rem;
-  color: #0a0307;
-  line-height: 1.6;
-}
-
-.animacion-centro {
-  width: 220px;
-  height: auto;
-  transform: scale(0.5);
 }
 
 .icon-wrapper {
