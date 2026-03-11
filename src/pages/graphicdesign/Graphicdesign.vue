@@ -1,171 +1,107 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
-const imagenDefault = '/imagenes/Justin-Bieber-PNG.png';
-const imagenHover = '/imagenes/Justin-Bieber-PNG-hover.png';
-const iconoMenu1 = ref(imagenDefault);
+const iconoMenu1 = ref('/imagenes/Justin-Bieber-PNG.png');
+const cambiarHover = () => { iconoMenu1.value = '/imagenes/Justin-Bieber-PNG-hover.png'; }
+const quitarHover = () => { iconoMenu1.value = '/imagenes/Justin-Bieber-PNG.png'; }
 
-const cambiarHover = () => {
-  iconoMenu1.value = imagenHover;
-}
-const quitarHover = () => {
-  iconoMenu1.value = imagenDefault;
-}
+const ilustraciones = [
+  '/imagenes/gd1.jpg',
+  '/imagenes/gd2.jpg',
+  '/imagenes/gd3.jpg',
+  '/imagenes/gd4.jpg'
+];
 
+const indiceCentral = ref(0);
+const ampliar = ref(false);
+
+const siguiente = () => {
+  indiceCentral.value = (indiceCentral.value + 1) % ilustraciones.length;
+};
+
+const anterior = () => {
+  indiceCentral.value = (indiceCentral.value - 1 + ilustraciones.length) % ilustraciones.length;
+};
+
+const irA = (i: number) => {
+  indiceCentral.value = i;
+  if (i === indiceCentral.value) ampliar.value = true;
+};
+
+const cerrar = () => {
+  ampliar.value = false;
+};
+
+const posiciones = computed(() =>
+  ilustraciones.map((_, i) => {
+    let offset = i - indiceCentral.value;
+    return {
+      offset,
+      scale: offset === 0 ? 1 : Math.max(0.5, 1 - Math.abs(offset) * 0.3),
+      zIndex: offset === 0 ? 10 : 5 - Math.abs(offset),
+      opacity: offset === 0 ? 1 : Math.max(0.5, 1 - Math.abs(offset) * 0.3)
+    };
+  })
+);
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
 <template>
-
   <nav class="nav-bar fixed top-0 left-0 w-full z-50 px-4">
-
-      <div class="nav-left">
-        <div class="icon-wrapper">
-        <img
-        :src="iconoMenu1"
-        alt="iconoMenu"
-        class="cursor-pointer"
-        @mouseenter="cambiarHover"
-        @mouseleave="quitarHover"
-        />
+    <div class="nav-left">
+      <div class="icon-wrapper">
+        <img :src="iconoMenu1" alt="iconoMenu" class="cursor-pointer" @mouseenter="cambiarHover" @mouseleave="quitarHover" />
         <span class="icon-tooltip">hope you like my work! :)</span>
       </div>
+    </div>
+    <div class="menu-items">
+      <router-link to="/" class="menu-button">home</router-link>
+      <router-link to="/about" class="menu-button">about</router-link>
+      <div class="contact-wrapper">
+        <router-link to="/contactme" class="menu-button">contact me!</router-link>
+        <img src="/imagenes/rallajo-circulo.png" class="contact-circle" />
       </div>
-
-      <div class="menu-items">
-
-        <router-link to="/" class="menu-button">home</router-link>
-        <router-link to="/about" class="menu-button">about</router-link>
-
-        <div class="contact-wrapper">
-          <router-link to="/contactme" class="menu-button">contact me!</router-link>
-          <img src="/imagenes/rallajo-circulo.png" class="contact-circle">
-        </div>
-
-      </div>
-
+    </div>
   </nav>
 
   <div class="contenedor">
-    <div class="contenido">
-      <div class="intro">
+    <h1 class="nav-title">GRAPHIC DESIGN</h1>
+
+    <div class="carousel-wrapper">
+      <button class="arrow left" @click="anterior">
+        <img src="/imagenes/flechaizquierda.png" alt="Anterior" class="arrow-icon" />
+      </button>
+
+      <div class="carousel">
+        <div
+          v-for="(img, i) in ilustraciones"
+          :key="i"
+          class="carousel-item"
+          @click="irA(i)"
+          v-bind:style="(() => {
+            const pos = posiciones[i] || { offset: 0, scale: 0.7, zIndex: 5, opacity: 0.7 };
+            return {
+              transform: `translateX(${pos.offset * 180}px) scale(${pos.scale})`,
+              zIndex: pos.zIndex,
+              opacity: pos.opacity
+            };
+          })()"
+        >
+          <img :src="img" alt="diseño gráfico" />
+        </div>
+      </div>
+
+      <button class="arrow right" @click="siguiente">
+        <img src="/imagenes/flechaderecha.png" alt="Siguiente" class="arrow-icon" />
+      </button>
     </div>
+
+    <div v-if="ampliar" class="lightbox" @click="cerrar">
+      <img :src="ilustraciones[indiceCentral]" alt="ampliado" class="lightbox-img" />
     </div>
   </div>
-
 </template>
 
-
-
-
-
-
-
-
-
-
-
-
 <style>
-
-.contact-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.contact-circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(80px, 10%, 180px);
-  height: auto;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.icon-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.icon-tooltip {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-30%, 6px);
-  font-size: 0.75rem;
-  font-family: "AlteHaasGroteskRegular", sans-serif;
-  color: #0a0307;
-  background: none;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  white-space: nowrap;
-}
-
-.icon-wrapper:hover .icon-tooltip {
-  opacity: 1;
-  transform: translate(-30%, 10px);
-}
-
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f9ecf5;
-  padding: 0.1rem 2rem;
-  border-bottom: 1px solid #0a0307;
-}
-
-.nav-left img {
-  display: block;
-  width: 40px;
-  height: 40px;
-}
-
-.menu-items {
-  display: flex;
-  gap: 1rem;
-}
-
-
-
-
-
-.menu-button {
-  background: none;
-  border: none;
-  font-family: "AlteHaasGroteskRegular", sans-serif;
-  font-size: 0.875rem;
-  cursor: pointer;
-  color: #0a0307;
-  padding: 0.25rem 0.5rem;
-  border-radius: 999px;
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out
-}
-
-.menu-button:hover {
-  color: #f9ecf5;
-  background-color: #0a0307;
-}
-
-.router-link-exact-active {
-  color: #f9ecf5;
-  background-color: #0a0307;
-  transition: all 0.25s ease;
-}
-
-
 .contenedor {
   width: 100%;
   padding: 3rem 2rem;
@@ -174,31 +110,87 @@ const quitarHover = () => {
   min-height: 100vh;
 }
 
-.contenido {
-  margin: 0 auto;
-  max-width: 1400px;
+.nav-title {
+  font-family: "AlteHaasGroteskBold", sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  letter-spacing: 0.1em;
+  color: #0a0307;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-@media (min-width: 768px) {
-
-  .menu-items {
-    gap: 2rem;
-  }
-
-  .contenedor {
-    padding: 3rem 2rem;
-  }
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
 }
 
-@media (min-width: 1024px) {
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  perspective: 1000px;
+  height: 300px;
+}
 
-  .menu-items {
-    gap: 3rem;
-  }
+.carousel-item {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.5s ease, z-index 0.5s ease, opacity 0.5s ease;
+}
 
-  .contenedor {
-    padding: 3rem 2rem;
-  }
-  
+.carousel-item img {
+  display: block;
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10,3,7,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  cursor: pointer;
+}
+
+.lightbox-img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
 }
 </style>
