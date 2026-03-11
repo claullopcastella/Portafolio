@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 const iconoMenu1 = ref('/imagenes/Justin-Bieber-PNG.png');
 const cambiarHover = () => { iconoMenu1.value = '/imagenes/Justin-Bieber-PNG-hover.png'; }
@@ -26,6 +26,36 @@ const reservarCita = () => {
   nombre.value = '';
   email.value = '';
 };
+
+const mesActual = ref(new Date().getMonth());
+const añoActual = ref(new Date().getFullYear());
+
+const generarDiasMes = (mes: number, año: number) => {
+  const totalDias = new Date(año, mes + 1, 0).getDate();
+  return Array.from({ length: totalDias }, (_, i) => ({
+    dia: i + 1,
+    ocupado: Math.random() < 0.3
+  }));
+};
+
+const diasDelMes = ref(generarDiasMes(mesActual.value, añoActual.value));
+
+const nombreMes = computed(() =>
+  new Date(añoActual.value, mesActual.value).toLocaleString('default', { month: 'long' })
+);
+
+const siguienteMes = () => {
+  if (mesActual.value === 11) { mesActual.value = 0; añoActual.value += 1; }
+  else mesActual.value += 1;
+  diasDelMes.value = generarDiasMes(mesActual.value, añoActual.value);
+};
+
+const mesAnterior = () => {
+  if (mesActual.value === 0) { mesActual.value = 11; añoActual.value -= 1; }
+  else mesActual.value -= 1;
+  diasDelMes.value = generarDiasMes(mesActual.value, añoActual.value);
+};
+
 </script>
 
 <template>
@@ -69,23 +99,37 @@ const reservarCita = () => {
 
       <div class="calendario">
         <h2>Availability</h2>
-        <table>
-          <thead>
-            <tr><th>Time</th><th>State</th></tr>
-          </thead>
-          <tbody>
-            <tr v-for="hora in horasDisponibles" :key="hora">
-              <td>{{ hora }}</td>
-              <td>{{ hora === horaSeleccionada && fechaSeleccionada ? 'Booked' : 'Available' }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="mes-navegacion">
+          <button @click="mesAnterior">&lt;</button>
+          <span>{{ nombreMes }} {{ añoActual }}</span>
+          <button @click="siguienteMes">&gt;</button>
+        </div>
+        <div class="calendar-grid">
+          <div
+            v-for="dia in diasDelMes"
+            :key="dia.dia"
+            class="calendar-day"
+            :class="{ ocupado: dia.ocupado, seleccionado: dia.dia === fechaSeleccionada }"
+            @click="!dia.ocupado ? fechaSeleccionada = dia.dia : null"
+          >
+            {{ dia.dia }}
+            <img v-if="dia.ocupado" src="/imagenes/no-disponible.png" class="no-disponible" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style>
+
+.mes-navegacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
 .appointment-button {
   background: none;
   border: none;
@@ -113,7 +157,7 @@ const reservarCita = () => {
 .nav-title {
   font-family: "AlteHaasGroteskBold", sans-serif;
   font-size: clamp(2.2rem, 6vw, 4.5rem);
-   letter-spacing: -0.02em;
+  letter-spacing: -0.02em;
   transform: scaleY(1.2);
   color: #0a0307;
   margin-bottom: 2rem;
@@ -152,12 +196,13 @@ const reservarCita = () => {
   padding: 0.5rem;
   font-size: 1rem;
   font-family: "AlteHaasGroteskRegular", sans-serif;
-   letter-spacing: -0.02em;
+  letter-spacing: -0.02em;
   transform: scaleY(1.2);
   border-radius: 5px;
   border: 1px solid #0a0307;
   box-sizing: border-box;
 }
+
 .flecha-cal {
   position: absolute;
   top: -40px;
@@ -168,7 +213,7 @@ const reservarCita = () => {
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.7;
   pointer-events: none;
-  z-index: 10; 
+  z-index: 10;
 }
 
 .button-wrapper {
@@ -189,101 +234,41 @@ const reservarCita = () => {
   100% { transform: translateX(-50%) translateY(0) scale(1.1); }
 }
 
-.calendario table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "AlteHaasGroteskRegular", sans-serif;
- letter-spacing: -0.02em;
-  transform: scaleY(1.2);
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.calendario th, .calendario td {
-  padding: 0.5rem;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-}
-
-.calendario th {
-  background-color: #f9ecf5;
-  color: #0a0307;
-  font-weight: bold;
-}
-
-.contact-wrapper {
+.calendar-day {
   position: relative;
+  width: 100%;
+  padding-top: 100%;
+  background-color: #f9ecf5;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  color: #0a0307;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
 }
 
-.contact-circle {
+.calendar-day.ocupado {
+  background-color: #e5d5e1;
+  cursor: not-allowed;
+}
+
+.calendar-day.seleccionado {
+  border: 2px solid #0a0307;
+}
+
+.no-disponible {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(80px, 10%, 180px);
+  width: 60%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-}
-
-.icon-wrapper {
-  position: relative;
-}
-
-.icon-tooltip {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-30%, 6px);
-  font-size: 0.75rem;
-  color: #0a0307;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s;
-}
-
-.icon-wrapper:hover .icon-tooltip {
-  opacity: 1;
-  transform: translate(-30%, 10px);
-}
-
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f9ecf5;
-  padding: 0.1rem 2rem;
-  border-bottom: 1px solid #0a0307;
-}
-
-.nav-left img {
-  display: block;
-  width: 40px;
-  height: 40px;
-}
-
-.menu-items {
-  display: flex;
-  gap: 1rem;
-}
-
-.menu-button {
-  background: none;
-  border: none;
-  font-family: "AlteHaasGroteskRegular", sans-serif;
-  font-size: 0.875rem;
- letter-spacing: -0.02em;
-  transform: scaleY(1.2);
-  cursor: pointer;
-  color: #0a0307;
-  padding: 0.25rem 0.5rem;
-  border-radius: 999px;
-  transition: color 0.3s, background-color 0.3s;
-}
-
-.menu-button.router-link-active {
-  background-color: #0a0307; 
-  color: #f9ecf5;
-}
-
-.menu-button:hover {
-  color: #f9ecf5;
-  background-color: #0a0307;
 }
 </style>
