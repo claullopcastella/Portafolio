@@ -83,11 +83,7 @@ const mesAnterior = () => {
         <h2>Book your appointment</h2>
         <input type="text" v-model="nombre" placeholder="Full name" />
         <input type="email" v-model="email" placeholder="Email" />
-        <input type="date" v-model="fechaSeleccionada" />
-        <select v-model="horaSeleccionada">
-          <option disabled value="">Select a time</option>
-          <option v-for="hora in horasDisponibles" :key="hora" :value="hora">{{ hora }}</option>
-        </select>
+        <input type="text" v-model="fechaSeleccionada" placeholder="Enter the hour" />
 
         <div class="button-wrapper">
           <img src="/imagenes/flechascal.png" class="flecha-cal" :class="{ active: fechaSeleccionada && horaSeleccionada }" />
@@ -117,41 +113,135 @@ const mesAnterior = () => {
           </div>
         </div>
       </div>
+
+      
+
+        <div class="bottom-contact">
+
+        <div class="redes-sociales">
+          <a href="https://www.instagram.com/claudllop/" target="_blank">
+            <img src="/imagenes/instagram.png" alt="instagram" class="icon-small" />
+             <span class="contact-item">@claudllopart</span>
+
+          </a>
+         
+        </div>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <img src="/imagenes/telefono.png" alt="Teléfono" class="icon-small">
+              <span>+34 633 77 62 62</span>
+            </div>
+            <div class="contact-item">
+              <img src="/imagenes/email.png" alt="Email" class="icon-small">
+              <span>claudllopart@gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+
+
     </div>
   </div>
 </template>
 
 <style>
 
-.mes-navegacion {
+.redes-sociales a {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #0a0307;
 }
 
-.appointment-button {
+.bottom-contact {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-shrink: wrap;
+  margin: 2rem 0;
+  gap: 2rem;
+}
+
+.icon-small {
+  width: clamp(25px, 3vw, 40px);
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.redes-sociales .icon-small:hover {
+  transform: scale(1.1);
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
+  font-size: 1rem;
+  color: #0a0307;
+}
+
+.redes-sociales {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.red-social-icon {
+  width: clamp(40px, 5vw, 60px);
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.red-social-icon:hover {
+  transform: scale(1.1);
+}
+.mes-navegacion button {
   background: none;
   border: none;
   font-family: "AlteHaasGroteskRegular", sans-serif;
-  font-size: 0.875rem;
-  cursor: pointer;
+  font-size: 1rem;
   color: #0a0307;
-  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
   border-radius: 999px;
-  transition: color 0.3s, background-color 0.3s;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
 }
 
-.appointment-button:hover {
-  color: #f9ecf5;
+.mes-navegacion button:hover {
+  animation: bounce 0.6s infinite alternate;
   background-color: #0a0307;
+  color: #f9ecf5;
 }
-
 .contenedor {
   width: 100%;
   padding: 3rem 2rem;
   background-color: #f9ecf5;
   min-height: 100vh;
+}
+
+.mes-navegacion span {
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  letter-spacing: -0.02em;
+  transform: scaleY(1.2);
+  font-size: 1rem;
+  color: #0a0307;
+  text-transform: capitalize;
 }
 
 .nav-title {
@@ -212,14 +302,35 @@ const mesAnterior = () => {
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.7;
-  pointer-events: none;
-  z-index: 10;
+  pointer-events: none; 
+  z-index: 10; 
+}
+
+.appointment-button {
+  background: none;
+  border: none;
+  font-family: "AlteHaasGroteskRegular", sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: #0a0307;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  transition: color 0.3s, background-color 0.3s;
+  position: relative;
+  z-index: 1; 
+}
+
+.appointment-button:hover {
+  color: #f9ecf5;
+  background-color: #0a0307;
 }
 
 .button-wrapper {
   position: relative;
   width: 100%;
-  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-wrapper:hover .flecha-cal,
